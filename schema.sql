@@ -8,8 +8,11 @@ CREATE DATABASE qa;
 
 -- brew services start postgresql
 -- psql postgres
-
+DROP TABLE IF EXISTS answers_photos;
+DROP TABLE IF EXISTS answers;
 DROP TABLE IF EXISTS questions;
+
+-- COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
@@ -22,30 +25,28 @@ CREATE TABLE questions (
   helpful INTEGER
 );
 
-DROP TABLE IF EXISTS answers;
+-- COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE answers (
   id SERIAL PRIMARY KEY,
+  question_id INTEGER references questions(id),
   body TEXT,
   date_written BIGINT,
   answerer_name TEXT,
   answerer_email TEXT,
   reported INTEGER,
-  helpful INTEGER,
-  question_id INTEGER references questions(id)
+  helpful INTEGER
 );
 
-DROP TABLE IF EXISTS photos;
 
-CREATE TABLE photos (
+-- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE answers_photos (
   id SERIAL PRIMARY KEY,
-  photo_url TEXT,
-  answer_id INTEGER references answers(id)
+  answer_id INTEGER references answers(id),
+  photo_url TEXT
 );
 
--- COPY answers FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
--- COPY answers_photos FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
--- COPY questions FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
+
 
 
 
