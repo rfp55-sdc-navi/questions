@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS photos;
 
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
-  url VARCHAR(250) NOT NULL,
+  url TEXT,
   answer_id INTEGER references answers(id)
 );
 
