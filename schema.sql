@@ -1,10 +1,13 @@
-CREATE DATABASE qanda;
+CREATE DATABASE qa;
 
 -- DROP TABLE IF EXISTS products;
 
 -- CREATE TABLE products (
 --   id SERIAL PRIMARY KEY
 -- );
+
+-- brew services start postgresql
+-- psql postgres
 
 DROP TABLE IF EXISTS questions;
 
@@ -28,7 +31,7 @@ CREATE TABLE answers (
   answerer_name TEXT,
   answerer_email TEXT,
   reported INTEGER,
-  helpful INTEGER
+  helpful INTEGER,
   question_id INTEGER references questions(id)
 );
 
