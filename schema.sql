@@ -1,35 +1,35 @@
 CREATE DATABASE qanda;
 
-DROP TABLE IF EXISTS products;
+-- DROP TABLE IF EXISTS products;
 
-CREATE TABLE products (
-  id sSERIAL PRIMARY KEY
-);
+-- CREATE TABLE products (
+--   id SERIAL PRIMARY KEY
+-- );
 
 DROP TABLE IF EXISTS questions;
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
-  question_body VARCHAR(1000) NOT NULL,
-  question_date DATE default current_timestamp,
-  asker_name VARCHAR(60) NOT NULL,
-  asker_email VARCHAR(60) NOT NULL,
-  question_helpfulness INT NOT NULL default 0,
-  reported boolean default false,
-  product_id INT references products(id)
+  product_id INTEGER,
+  body TEXT,
+  date_written BIGINT,
+  asker_name TEXT,
+  asker_email TEXT,
+  reported INTEGER,
+  helpful INTEGER
 );
 
 DROP TABLE IF EXISTS answers;
 
 CREATE TABLE answers (
   id SERIAL PRIMARY KEY,
-  answer_body VARCHAR(1000) NOT NULL,
-  created_at DATE default current_timestamp,
-  answerer_name VARCHAR(60) NOT NULL,
-  answerer_email VARCHAR(60) NOT NULL,
-  helpfulness INT default 0,
-  reported boolean default false,
-  question_id INT references questions(id)
+  body TEXT,
+  date_written BIGINT,
+  answerer_name TEXT,
+  answerer_email TEXT,
+  reported INTEGER,
+  helpful INTEGER
+  question_id INTEGER references questions(id)
 );
 
 DROP TABLE IF EXISTS photos;
@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS photos;
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
   url VARCHAR(250) NOT NULL,
-  answer_id INT references answers(id)
+  answer_id INTEGER references answers(id)
 );
 
 -- COPY answers FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
