@@ -1,0 +1,22 @@
+{
+  "name": "questions",
+  "version": "1.0.0",
+  "description": "questions api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfp55-sdc-navi/questions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rfp55-sdc-navi/questions/issues"
+  },
+  "homepage": "https://github.com/rfp55-sdc-navi/questions#readme",
+  "dependencies": {
+    "pg": "^8.7.1"
+  }
+}
