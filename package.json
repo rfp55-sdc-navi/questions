@@ -4,7 +4,7 @@
   "description": "questions api",
   "main": "index.js",
   "scripts": {
-    "start:dev": "node ./server/server.js",
+    "start:dev": "nodemon ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +22,10 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "supertest": "^6.1.6"
   }
 }
