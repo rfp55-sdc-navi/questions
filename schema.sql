@@ -46,7 +46,7 @@ CREATE TABLE answers_photos (
   photo_url TEXT
 );
 
-
+-- ALTER TABLE reviews ADD INDEX product_id (product_id)
 
 
 
