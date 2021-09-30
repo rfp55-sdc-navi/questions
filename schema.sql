@@ -107,7 +107,6 @@ CREATE TABLE answers_photos (
 
 
 
-
 -- ---
 -- Table Properties
 -- ---

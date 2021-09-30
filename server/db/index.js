@@ -1,11 +1,12 @@
 const { Pool } = require('pg')
+const qaModel = require('../model/qaModel');
 
 const pool = new Pool({
   host: 'localhost',
   database: 'qa',
   user: 'root',
   port: 5432,
-  password: null,
+  password: '123',
 });
 
 module.exports = {
@@ -14,5 +15,16 @@ module.exports = {
   },
 }
 
+// const connection = pool.connect((err) => {
+//   if (err) {
+//     console.log("Error");
+//   } else {
+//     console.log("DB Connected");
+//   }
+// })
+
+// module.exports.connection = connection;
+
+// inbound rule - specific port available to everyone
 
 // https://node-postgres.com/guides/project-structure

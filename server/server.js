@@ -2,7 +2,7 @@ const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
-// var router = require('./routes/questionsRoutes.js');
+// var router = require('./routes/qaRoutes.js');
 
 const port = 3000
 
