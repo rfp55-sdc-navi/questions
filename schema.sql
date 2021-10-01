@@ -1,25 +1,13 @@
-CREATE DATABASE qa;
 
 -- brew services start postgresql
 -- psql postgres -U root
+-- brew services stop postgresql
 
--- DROP TABLE IF EXISTS products;
+CREATE DATABASE qa;
 
--- CREATE TABLE products (
---   id SERIAL PRIMARY KEY
--- );
-
--- brew services start postgresql
--- psql postgres
 DROP TABLE IF EXISTS answers_photos;
 DROP TABLE IF EXISTS answers;
 DROP TABLE IF EXISTS questions;
-
--- COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
--- CREATE INDEX <index-name> ON <table-name> (<column-name>)
--- select *
--- from pg_indexes
--- where tablename not like 'pg%';
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
@@ -32,8 +20,6 @@ CREATE TABLE questions (
   helpful INTEGER
 );
 
--- COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
-
 CREATE TABLE answers (
   id SERIAL PRIMARY KEY,
   question_id INTEGER references questions(id),
@@ -45,15 +31,40 @@ CREATE TABLE answers (
   helpful INTEGER
 );
 
-
--- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
 CREATE TABLE answers_photos (
   id SERIAL PRIMARY KEY,
   answer_id INTEGER references answers(id),
   photo_url TEXT
 );
 
+-- TODO - create indices
 -- ALTER TABLE reviews ADD INDEX product_id (product_id)
+
+-- CREATE INDEX <index-name> ON <table-name> (<column-name>)
+-- select *
+-- from pg_indexes
+-- where tablename not like 'pg%';
+
+
+
+
+
+-----------ETL-------------
+
+-- COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
+
+-- COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
+
+-- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -108,11 +119,6 @@ CREATE TABLE answers_photos (
 -- ALTER TABLE `questions` ADD FOREIGN KEY (product_id) REFERENCES `products` (`id`);
 -- ALTER TABLE `answers` ADD FOREIGN KEY (question_id) REFERENCES `questions` (`id`);
 -- ALTER TABLE `photos` ADD FOREIGN KEY (answer_id) REFERENCES `answers` (`id`);
-
-
-
-
-
 
 -- ---
 -- Table Properties

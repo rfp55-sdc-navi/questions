@@ -5,7 +5,7 @@ const app = express();
 var router = require('./routes/qaRoutes');
 
 const port = 3000
-// compress all responses
+
 app.use(compression());
 app.use(morgan('dev'));
 app.set('port', 3000);
@@ -15,7 +15,6 @@ app.use(express.json());
 app.use('/qa', router);
 
 app.use('/hello', (req, res) => res.status(200).send('hello'));
-
 
 app.listen(port, () => {
   console.log(`Questions and Answers server listening at http://localhost:${port}`)

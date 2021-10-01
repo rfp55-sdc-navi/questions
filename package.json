@@ -25,6 +25,7 @@
     "pg-promise": "^10.11.0"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
     "jest": "^27.2.4",
     "nodemon": "^2.0.13",
     "supertest": "^6.1.6"
