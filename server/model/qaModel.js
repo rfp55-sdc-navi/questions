@@ -12,17 +12,19 @@ const getAnswers = function (question_id, page, count, cb) {
         'count', ${count},
         'results', json_agg (
           json_build_object (
-          'answer_id', ${},
-          'body', ${},
-          'date', ${},
-          'answerer_name', ${},
-          'helpfulness', ${},
+          'answer_id', answers.id,
+          'body', answers.body,
+          'date', TO_TIMESTAMP(answers.date_written),
+          'answerer_name', answers.answerer_name,
+          'helpfulness', answers.helpful,
           'photos', (
-
+            SELECT json_agg (answer_photos.photo_url)
+              FROM answers_photos WHERE (answers_photos.answer_id = answers.id)
           )
         )
       )
-    )`
+    )
+    FROM answers WHERE answers.question_id = ${questions.id} AND answers.reported = 0 GROUP BY answers.question_id`
   )
     .then((data) => {
       callback(null, data);
@@ -110,7 +112,7 @@ const patchReportAnswers = function (answer_id, cb) {
 };
 
 module.exports = {
-  getQuestion,
+  getQuestions,
   getAnswers,
   postQuestions,
   postAnswers,
