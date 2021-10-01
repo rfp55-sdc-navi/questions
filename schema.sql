@@ -16,6 +16,10 @@ DROP TABLE IF EXISTS answers;
 DROP TABLE IF EXISTS questions;
 
 -- COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
+-- CREATE INDEX <index-name> ON <table-name> (<column-name>)
+-- select *
+-- from pg_indexes
+-- where tablename not like 'pg%';
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,

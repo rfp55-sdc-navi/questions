@@ -1,7 +1,44 @@
 const db = require('../db').db;
 
 const getQuestions = function (product_id, page, count, cb) {
-
+  db.query(`
+      SELECT product_id, json_agg(
+        json_build_object(
+          'question_id', questions.id,
+          'question_body', questions.body,
+          'question_date', to_timestamp(questions.date),
+          'asker_name', questions.asker_name,
+          'question_helpfulness', questions.helpful,
+          'reported', questions.reported,
+          'answers', (SELECT answers FROM (
+            SELECT json_object_agg(
+              answers.id, json_build_object(
+                'id', answers.id,
+                'body', answers.body,
+                'date', TO_TIMESTAMP(answers.date_written),
+                'answerer_name', answers.answerer_name,
+                'helpfulness', answers.helpful,
+                'photos',(
+                  SELECT json_agg(
+                    json_build_object(
+                      'url', answers_photos.photo_url
+                    )
+                  ) FROM answers_photos WHERE answers_photos.answer_id = answers.id
+                )
+              )
+            ) AS answers
+            FROM answers WHERE answers.product_id = questions.id
+          ) AS answers)
+      )
+    ) as results
+    FROM questions WHERE questions.product_id = ${product_id} AND questions.reported = 0 GROUP BY questions.product_id;
+  `)
+    .then((data) => {
+      callback(null, data);
+    })
+    .catch((err) => {
+      callback(err, null);
+    })
 };
 
 const getAnswers = function (question_id, page, count, cb) {

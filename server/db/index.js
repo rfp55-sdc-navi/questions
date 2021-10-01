@@ -9,9 +9,9 @@ const connection = {
   password: '123',
 };
 
-var db = pgp(connection);
+// var db = pgp(connection);
 
-module.exports = db;
+module.exports.db = pgp(connection);
 
 
 // const { Pool } = require('pg')
