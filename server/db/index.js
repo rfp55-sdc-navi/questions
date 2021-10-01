@@ -1,18 +1,35 @@
-const { Pool } = require('pg')
+const pgp = require('pg-promise')(/* options */);
 
-const pool = new Pool({
+// node postgres
+const connection = {
   host: 'localhost',
   database: 'qa',
   user: 'root',
   port: 5432,
   password: '123',
-});
+};
 
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback)
-  },
-}
+var db = pgp(connection);
+
+module.exports = db;
+
+
+// const { Pool } = require('pg')
+
+// // node postgres
+// const pool = new Pool({
+//   host: 'localhost',
+//   database: 'qa',
+//   user: 'root',
+//   port: 5432,
+//   password: '123',
+// });
+
+// module.exports = {
+//   query: (text, params, callback) => {
+//     return pool.query(text, params, callback)
+//   },
+// }
 
 // const connection = pool.connect((err) => {
 //   if (err) {
