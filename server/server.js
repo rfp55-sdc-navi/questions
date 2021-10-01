@@ -13,6 +13,7 @@ app.set('port', 3000);
 app.use(express.json());
 
 app.use('/qa', router);
+
 app.use('/hello', (req, res) => res.status(200).send('hello'));
 
 

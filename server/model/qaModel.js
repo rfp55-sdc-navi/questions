@@ -111,10 +111,10 @@ const postAnswers = function (question_id, dataBody, cb) {
 const patchHelpfulQuestions = function (question_id, cb) {
   db.query(`UPDATE questions SET helpful = helpful + 1 WHERE questions.id = ${question_id}`)
     .then((data) => {
-      callback(null, data);
+      cb(null, data);
     })
     .catch((err) => {
-      callback(err, null);
+      cb(err, null);
     })
 };
 
@@ -131,10 +131,10 @@ const patchReportQuestions = function (question_id, cb) {
 const patchHelpfulAnswers = function (answer_id, cb) {
   db.query(`UPDATE answers SET helpful = helpful + 1 WHERE answers.id = ${answer_id}`)
     .then((data) => {
-      callback(null, data);
+      cb(null, data);
     })
     .catch((err) => {
-      callback(err, null);
+      cb(err, null);
     })
 };
 
