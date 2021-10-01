@@ -1,5 +1,4 @@
 const { Pool } = require('pg')
-const qaModel = require('../model/qaModel');
 
 const pool = new Pool({
   host: 'localhost',
