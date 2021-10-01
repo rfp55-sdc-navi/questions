@@ -1,5 +1,8 @@
 CREATE DATABASE qa;
 
+-- brew services start postgresql
+-- psql postgres -U root
+
 -- DROP TABLE IF EXISTS products;
 
 -- CREATE TABLE products (
