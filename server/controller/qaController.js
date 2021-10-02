@@ -2,8 +2,8 @@ const models = require('../model/qaModel');
 
 const getQuestions = function (req, res) {
   var product_id = req.params.product_id;
-  var page = 1 || req.body.page;
-  var count = 5 || req.body.count;
+  var page = 1 || req.params.page;
+  var count = 5 || req.params.count;
 
   models.getQuestions(product_id, page, count, (err, result) => {
     if (err) {
@@ -17,8 +17,8 @@ const getQuestions = function (req, res) {
 
 const getAnswers = function (req, res) {
   var question_id = req.params.question_id;
-  var page = req.body.page || 1;
-  var count = req.body.count || 5;
+  var page = 1 || req.query.page;
+  var count = 5 || req.query.count;
 
   models.getAnswers(question_id, page, count, (err, result) => {
     if (err) {

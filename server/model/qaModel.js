@@ -42,26 +42,49 @@ const getQuestions = function (product_id, page, count, callback) {
 };
 
 const getAnswers = function (question_id, page, count, callback) {
+  // db.query(`SELECT json_build_object(
+  //       'question', ${question_id},
+  //       'page', ${page},
+  //       'count', ${count},
+  //       'results', json_agg(
+  //         json_build_object(
+  //         'answer_id', answers.id,
+  //         'body', answers.body,
+  //         'date', TO_TIMESTAMP(answers.date_written),
+  //         'answerer_name', answers.answerer_name,
+  //         'helpfulness', answers.helpful,
+  //         'photos', (
+  //           SELECT json_agg(answers_photos.photo_url)
+  //             FROM answers_photos WHERE (answers_photos.answer_id = answers.id
+  //           )
+  //         )
+  //       )
+  //     )
+  //   )
+  //   FROM answers WHERE answers.question_id = ${question_id} AND answers.reported = 0 GROUP BY answers.question_id`
+  // )
+
   db.query(`
-      SELECT json_build_object (
-        'question', ${question_id},
-        'page', ${page},
-        'count', ${count},
-        'results', json_agg (
-          json_build_object (
-          'answer_id', answers.id,
-          'body', answers.body,
-          'date', TO_TIMESTAMP(answers.date_written),
-          'answerer_name', answers.answerer_name,
-          'helpfulness', answers.helpful,
-          'photos', (
-            SELECT json_agg (answer_photos.photo_url)
-              FROM answers_photos WHERE (answers_photos.answer_id = answers.id)
+        SELECT json_build_object(
+            'question', ${question_id},
+            'page', ${page},
+            'count', ${count},
+            'results', json_agg(
+              json_build_object(
+                'answer_id', answers.id,
+                'body', answers.body,
+                'date', to_timestamp(answers.date_written / 1000),
+                'answerer_name', answers.answerer_name,
+                'helpfulness', answers.helpful,
+                'photos', (
+                  SELECT
+                    json_agg(answers_photos.photo_url)
+                  FROM answers_photos WHERE answers_photos.answer_id = answers.id
+                )
+              )
+            )
           )
-        )
-      )
-    )
-    FROM answers WHERE answers.question_id = ${questions.id} AND answers.reported = 0 GROUP BY answers.question_id`
+        FROM answers WHERE answers.question_id = ${question_id} AND answers.reported = 0 GROUP BY answers.question_id;`
   )
     .then((data) => {
       callback(null, data);
@@ -70,6 +93,9 @@ const getAnswers = function (question_id, page, count, callback) {
       callback(err, null);
     })
 };
+
+// db.query(
+//   'select array_to_json(array_agg(row_to_json(t))) from (select id,answer_body,created_at,answerer_name, helpfulness, reported, (select array_to_json(array_agg(row_to_json(d))) from ( select id, url from photos where photos.answer_id  = answers.id )d ) as photos  from answers where answers.question_id = $1 and answers.reported = false order by helpfulness DESC limit $2)t', [question_id, responseObj.count])
 
 const postQuestions = function (dataBody, callback) {
   var productID = dataBody.product_id;
