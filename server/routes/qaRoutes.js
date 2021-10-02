@@ -3,7 +3,7 @@ var router = require('express').Router();
 
 // GET /qa/questions - Retrieves a list of questions for a particular product - does not include any reported questions.
 // GET /qa/questions/:question_id/answers - Returns answers for a given question - does not include any reported answers.
-router.get('/questions/:product_id', controller.getQuestions);
+router.get('/questions', controller.getQuestions);
 router.get('/questions/:question_id/answers', controller.getAnswers);
 
 // POST /qa/questions - Adds a question for the given product

@@ -39,7 +39,8 @@ CREATE TABLE answers_photos (
 
 -- TODO - create indices
 -- create index for product it
--- CREATE INDEX productIndex ON questions(product_id);
+-- CREATE INDEX questionsProductIdIndex ON questions(product_id);
+-- CREATE INDEX answersQuestionIdIndex ON answers(question_id);
 
 
 
