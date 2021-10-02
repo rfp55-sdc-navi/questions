@@ -20,13 +20,9 @@ const getQuestions = function (product_id, page, count, callback) {
                 'helpfulness', answers.helpful,
                 'photos', (
                   select coalesce(json_agg(
-                      json_build_object(
-                        'id', t.id,
-                        'url', t.photo_url
-                      )
+                      t.photo_url
                     ), '[]'::json) from
                     (SELECT
-                        answers_photos.id,
                         answers_photos.photo_url
                   FROM answers_photos WHERE answers_photos.answer_id = answers.id) AS t
                 )
