@@ -80,8 +80,9 @@ const postQuestions = function (dataBody, callback) {
   var reportedQuestion = 0;
   var helpfulQuestion = 0;
 
-  db.query(`INSERT INTO questions(product_id, body, date_written, asker_name, asker_email, reported, helpful)
-    VALUES(${productID}, ${bodyQuestion}, ${dateQuestion}, ${nameQuestion}, ${emailQuestion}, ${reportedQuestion}, ${helpfulQuestion})`)
+  db.query(`INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful)
+    VALUES (${productID}, '${bodyQuestion}', '${dateQuestion}', '${nameQuestion}', '${emailQuestion}',
+    ${reportedQuestion}, ${helpfulQuestion});`)
     .then((data) => {
       callback(null, data);
     })
@@ -98,10 +99,18 @@ const postAnswers = function (question_id, dataBody, callback) {
   var reportedAnswer = 0;
   var helpfulAnswer = 0;
 
-  db.query(`INSERT INTO answers(question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
-    VALUES(${question_id}, ${bodyAnswer}, ${dateAnswer}, ${nameAnswer}, ${emailAnswer}, ${reportedAnswer}, ${helpfulAnswer})`)
+  var photos = dataBody.photos;
+
+  db.query(`INSERT INTO answers (question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
+    VALUES(${question_id}, '${bodyAnswer}', '${dateAnswer}', '${nameAnswer}', '${emailAnswer}', ${reportedAnswer}, ${helpfulAnswer}) RETURNING id;`)
     .then((data) => {
-      callback(null, data);
+      db.query(`INSERT INTO answers_photos (answer_id, photo_url) VALUES (${data[0].id}, '${photos}');`)
+        .then((data) => {
+          callback(null, data);
+        })
+        .catch((err) => {
+          callback(err, null);
+        });
     })
     .catch((err) => {
       callback(err, null);
@@ -109,7 +118,7 @@ const postAnswers = function (question_id, dataBody, callback) {
 };
 
 const patchHelpfulQuestions = function (question_id, callback) {
-  db.query(`UPDATE questions SET helpful = helpful + 1 WHERE questions.id = ${question_id}`)
+  db.query(`UPDATE questions SET helpful = helpful + 1 WHERE questions.id = ${question_id};`)
     .then((data) => {
       callback(null, data);
     })
@@ -119,7 +128,7 @@ const patchHelpfulQuestions = function (question_id, callback) {
 };
 
 const patchReportQuestions = function (question_id, callback) {
-  db.query(`UPDATE questions SET reported = 1 WHERE questions.id = ${question_id}`)
+  db.query(`UPDATE questions SET reported = 1 WHERE questions.id = ${question_id};`)
     .then((data) => {
       callback(null, data);
     })
@@ -129,7 +138,7 @@ const patchReportQuestions = function (question_id, callback) {
 };
 
 const patchHelpfulAnswers = function (answer_id, callback) {
-  db.query(`UPDATE answers SET helpful = helpful + 1 WHERE answers.id = ${answer_id}`)
+  db.query(`UPDATE answers SET helpful = helpful + 1 WHERE answers.id = ${answer_id};`)
     .then((data) => {
       callback(null, data);
     })
@@ -139,7 +148,7 @@ const patchHelpfulAnswers = function (answer_id, callback) {
 };
 
 const patchReportAnswers = function (answer_id, callback) {
-  db.query(`UPDATE answers SET reported = 1 WHERE answers.id = ${answer_id}`)
+  db.query(`UPDATE answers SET reported = 1 WHERE answers.id = ${answer_id};`)
     .then((data) => {
       callback(null, data);
     })

@@ -38,6 +38,11 @@ CREATE TABLE answers_photos (
 );
 
 -- TODO - create indices
+-- create index for product it
+-- CREATE INDEX productIndex ON questions(product_id);
+
+
+
 -- ALTER TABLE reviews ADD INDEX product_id (product_id)
 
 -- CREATE INDEX <index-name> ON <table-name> (<column-name>)
@@ -46,7 +51,10 @@ CREATE TABLE answers_photos (
 -- where tablename not like 'pg%';
 
 
-
+-- SELECT MAX(the_primary_key) FROM the_table;
+-- SELECT nextval('the_primary_key_sequence');
+-- SELECT setval('the_primary_key_sequence', (SELECT MAX(the_primary_key) FROM the_table)+1);
+-- SELECT pg_get_serial_sequence('questions', 'id');
 
 
 -----------ETL-------------
