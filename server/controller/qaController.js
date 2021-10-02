@@ -25,7 +25,10 @@ const getAnswers = function (req, res) {
       console.log('getAnswers error' + err);
       res.sendStatus(500)
     } else {
-      res.send(result);
+      // data.rows[0].json_build_object
+      // res.send(result["json_build_object"]);
+      // res.send(result);
+      res.send(result[0].json_build_object);
     }
   })
 };
