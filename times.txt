@@ -1,6 +1,22 @@
-router.get('/questions/:product_id', controller.getQuestions);
+router.get('/questions/', controller.getQuestions);
+http://localhost:3000/qa/questions?product_id=40346&page=1&count=5
+
+10/2
+Status 200 OK
+Time: 6.49 s
+Total: 6.52 s
+size: 1.74 KB
+
 
 router.get('/questions/:question_id/answers', controller.getAnswers);
+http://localhost:3000/qa/questions/1/answers
+
+10/2
+Status 200 OK
+Time: 16.67 s
+Total: 16.75 s
+size: 1.51 KB
+
 
 router.post('/questions', controller.postQuestions);
 http://localhost:3000/qa/questions

@@ -42,6 +42,9 @@ CREATE TABLE answers_photos (
 -- CREATE INDEX questionsProductIdIndex ON questions(product_id);
 -- CREATE INDEX answersQuestionIdIndex ON answers(question_id);
 
+-- select *
+-- from pg_indexes
+-- where tablename not like 'pg%';
 
 
 -- ALTER TABLE reviews ADD INDEX product_id (product_id)

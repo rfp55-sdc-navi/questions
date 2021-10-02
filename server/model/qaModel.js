@@ -109,21 +109,6 @@ const getAnswers = function (question_id, page, count, callback) {
 // )
 
 
-// SELECT
-// json_agg(
-//   json_build_object(
-//     'id', answers_photos.id,
-//     'url', answers_photos.photo_url
-//   )
-// )
-
-// db.query(
-//   `select array_to_json(array_agg(row_to_json(t))) from (select answer_id,body,date,answerer_name, helpfulness, (select array_to_json(array_agg(row_to_json(d))) from ( select id, url from answers_photos where answers_photos.answer_id  = answers.id )d ) as photos  from answers where answers.question_id = ${question_id} and answers.reported = 0 order by helpfulness DESC limit 5)t`)
-
-// db.query(
-//   `select array_to_json(array_agg(row_to_json(t))) from (select id,answer_body,created_at,answerer_name, helpfulness, reported, (select array_to_json(array_agg(row_to_json(d))) from ( select id, url from answers_photos where answers_photos.answer_id  = answers.id )d ) as photos  from answers where answers.question_id = ${question_id} and answers.reported = 0 order by helpfulness DESC limit 5)t`)
-
-
 const postQuestions = function (dataBody, callback) {
   var productID = dataBody.product_id;
   var bodyQuestion = dataBody.body;
