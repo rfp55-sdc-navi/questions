@@ -4,8 +4,16 @@ router.get('/questions/:question_id/answers', controller.getAnswers);
 
 router.post('/questions', controller.postQuestions);
 
-router.post('/questions/:question_id/answers', controller.postAnswers);
 
+router.post('/questions/:question_id/answers', controller.postAnswers);
+http://localhost:3000/qa/questions/1/answers
+
+{
+   "body":"123",
+   "name": "test",
+   "email": "test@gmail.com",
+   "photos": []
+}
 
 
 

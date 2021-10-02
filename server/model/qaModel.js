@@ -81,7 +81,7 @@ const postQuestions = function (dataBody, callback) {
   var helpfulQuestion = 0;
 
   db.query(`INSERT INTO questions(product_id, body, date_written, asker_name, asker_email, reported, helpful)
-    VALUES(${question_id}, ${bodyAnswer}, ${dateAnswer}, ${nameAnswer}, ${emailAnswer}, ${reportedAnswer}, ${helpfulAnswer})`)
+    VALUES(${productID}, ${bodyQuestion}, ${dateQuestion}, ${nameQuestion}, ${emailQuestion}, ${reportedQuestion}, ${helpfulQuestion})`)
     .then((data) => {
       callback(null, data);
     })

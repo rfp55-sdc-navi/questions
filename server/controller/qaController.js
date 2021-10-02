@@ -35,7 +35,7 @@ const postQuestions = function (req, res) {
 
   models.postQuestions(dataBody, (err, result) => {
     if (err) {
-      console.log('postQuestions error' + err);
+      console.log('postQuestions error ' + err);
       res.sendStatus(500)
     } else {
       res.send(result);
@@ -49,7 +49,7 @@ const postAnswers = function (req, res) {
 
   models.postAnswers(question_id, dataBody, (err, result) => {
     if (err) {
-      console.log('postAnswers error' + err);
+      console.log('postAnswers error ' + err);
       res.sendStatus(500)
     } else {
       res.send(result);
