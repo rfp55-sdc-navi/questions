@@ -1,8 +1,17 @@
 const db = require('../db').db;
 
 const getQuestions = function (product_id, page, count, callback) {
+  select array_to_json(array_agg(t)) from
+    (select id, question_body, question_date, asker_name, question_helpfulness, reported,
+      (select json_object_agg(d.id, d) from(select id, answer_body, created_at, answerer_name, helpfulness, reported,
+        (select array_to_json(array_agg(row_to_json(c))) from
+        (select id, url from photos where photos.answer_id = answers.id)c) as photos from answers where answers.question_id = questions.id and answers.reported = false) d )
+      as answers from questions where questions.product_id = $1 and questions.reported = false
+      order by question_helpfulness DESC limit $2 ) t', [product_id, count || 5]
+
+
   db.query(`
-      SELECT product_id, json_agg(
+      SELECT 'product_id', ${product_id}, json_agg(
         json_build_object(
           'question_id', questions.id,
           'question_body', questions.body,
@@ -44,58 +53,33 @@ const getQuestions = function (product_id, page, count, callback) {
 };
 
 const getAnswers = function (question_id, page, count, callback) {
-  // db.query(`SELECT json_build_object(
-  //       'question', ${question_id},
-  //       'page', ${page},
-  //       'count', ${count},
-  //       'results', json_agg(
-  //         json_build_object(
-  //         'answer_id', answers.id,
-  //         'body', answers.body,
-  //         'date', TO_TIMESTAMP(answers.date_written),
-  //         'answerer_name', answers.answerer_name,
-  //         'helpfulness', answers.helpful,
-  //         'photos', (
-  //           SELECT json_agg(answers_photos.photo_url)
-  //             FROM answers_photos WHERE (answers_photos.answer_id = answers.id
-  //           )
-  //         )
-  //       )
-  //     )
-  //   )
-  //   FROM answers WHERE answers.question_id = ${question_id} AND answers.reported = 0 GROUP BY answers.question_id`
-  // )
-  //  'date', to_timestamp(answers.date_written / 1000),
-
   db.query(`
-        SELECT json_build_object(
-            'question', ${question_id},
-            'page', ${page},
-            'count', ${count},
-            'results', json_agg(
-              json_build_object(
-                'answer_id', answers.id,
-                'body', answers.body,
-                'date', TO_TIMESTAMP(answers.date_written / 1000),
-                'answerer_name', answers.answerer_name,
-                'helpfulness', answers.helpful,
-                'photos', (
-                  SELECT
-                    json_agg(
-                      json_build_object(
-                        'id', answers_photos.id,
-                        'url', answers_photos.photo_url
-                      )
-                    )
-                  FROM answers_photos WHERE answers_photos.answer_id = answers.id
+    SELECT json_build_object(
+        'question', ${question_id},
+        'page', ${page},
+        'count', ${count},
+        'results', json_agg(
+          json_build_object(
+            'answer_id', answers.id,
+            'body', answers.body,
+            'date', TO_TIMESTAMP(answers.date_written / 1000),
+            'answerer_name', answers.answerer_name,
+            'helpfulness', answers.helpful,
+            'photos', (
+              SELECT
+                json_agg(
+                  json_build_object(
+                    'id', answers_photos.id,
+                    'url', answers_photos.photo_url
+                  )
                 )
-              )
+              FROM answers_photos WHERE answers_photos.answer_id = answers.id
             )
           )
-        FROM answers WHERE answers.question_id = ${question_id} AND answers.reported = 0 GROUP BY answers.question_id;`
+        )
+      )
+    FROM answers WHERE answers.question_id = ${question_id} AND answers.reported = 0 GROUP BY answers.question_id;`
   )
-    // db.query(
-    //   `select array_to_json(array_agg(row_to_json(t))) from (select id,body,date_written,answerer_name, helpful, (select array_to_json(array_agg(row_to_json(d))) from ( select id, photo_url from answers_photos where answers_photos.answer_id  = answers.id )d ) as photos  from answers where answers.question_id = ${question_id} and answers.reported = 0 order by helpful DESC limit 5)t`)
     .then((data) => {
       callback(null, data);
     })
