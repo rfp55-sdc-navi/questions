@@ -1,6 +1,6 @@
 const db = require('../db').db;
 
-const getQuestions = function (product_id, page, count, cb) {
+const getQuestions = function (product_id, page, count, callback) {
   db.query(`
       SELECT product_id, json_agg(
         json_build_object(
@@ -41,7 +41,7 @@ const getQuestions = function (product_id, page, count, cb) {
     })
 };
 
-const getAnswers = function (question_id, page, count, cb) {
+const getAnswers = function (question_id, page, count, callback) {
   db.query(`
       SELECT json_build_object (
         'question', ${question_id},
@@ -71,7 +71,7 @@ const getAnswers = function (question_id, page, count, cb) {
     })
 };
 
-const postQuestions = function (dataBody, cb) {
+const postQuestions = function (dataBody, callback) {
   var productID = dataBody.product_id;
   var bodyQuestion = dataBody.body;
   var dateQuestion = Date.now();
@@ -90,7 +90,7 @@ const postQuestions = function (dataBody, cb) {
     })
 };
 
-const postAnswers = function (question_id, dataBody, cb) {
+const postAnswers = function (question_id, dataBody, callback) {
   var bodyAnswer = dataBody.body;
   var dateAnswer = Date.now();
   var nameAnswer = dataBody.name;
@@ -108,17 +108,17 @@ const postAnswers = function (question_id, dataBody, cb) {
     })
 };
 
-const patchHelpfulQuestions = function (question_id, cb) {
+const patchHelpfulQuestions = function (question_id, callback) {
   db.query(`UPDATE questions SET helpful = helpful + 1 WHERE questions.id = ${question_id}`)
     .then((data) => {
-      cb(null, data);
+      callback(null, data);
     })
     .catch((err) => {
-      cb(err, null);
+      callback(err, null);
     })
 };
 
-const patchReportQuestions = function (question_id, cb) {
+const patchReportQuestions = function (question_id, callback) {
   db.query(`UPDATE questions SET reported = 1 WHERE questions.id = ${question_id}`)
     .then((data) => {
       callback(null, data);
@@ -128,17 +128,17 @@ const patchReportQuestions = function (question_id, cb) {
     })
 };
 
-const patchHelpfulAnswers = function (answer_id, cb) {
+const patchHelpfulAnswers = function (answer_id, callback) {
   db.query(`UPDATE answers SET helpful = helpful + 1 WHERE answers.id = ${answer_id}`)
     .then((data) => {
-      cb(null, data);
+      callback(null, data);
     })
     .catch((err) => {
-      cb(err, null);
+      callback(err, null);
     })
 };
 
-const patchReportAnswers = function (answer_id, cb) {
+const patchReportAnswers = function (answer_id, callback) {
   db.query(`UPDATE answers SET reported = 1 WHERE answers.id = ${answer_id}`)
     .then((data) => {
       callback(null, data);

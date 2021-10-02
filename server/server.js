@@ -2,18 +2,17 @@ const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
-var router = require('./routes/qaRoutes');
-
 const port = 3000
+
+var router = require('./routes/qaRoutes');
 
 app.use(compression());
 app.use(morgan('dev'));
-app.set('port', 3000);
-
 app.use(express.json());
 
-app.use('/qa', router);
+app.set('port', 3000);
 
+app.use('/qa', router);
 app.use('/hello', (req, res) => res.status(200).send('hello'));
 
 app.listen(port, () => {
@@ -22,8 +21,6 @@ app.listen(port, () => {
 
 
 
-
-// compression
 // https://www.digitalocean.com/community/tutorials/nodejs-compression
 
 // server.js

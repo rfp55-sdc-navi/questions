@@ -1,6 +1,5 @@
 const pgp = require('pg-promise')(/* options */);
 
-// node postgres
 const connection = {
   host: 'localhost',
   database: 'qa',
@@ -8,6 +7,9 @@ const connection = {
   port: 5432,
   password: '123'
 };
+
+module.exports.db = pgp(connection);
+
 
 // var db = pgp(connection);
 // db.connect()
@@ -23,12 +25,8 @@ const connection = {
 
 // module.exports = db;
 
-module.exports.db = pgp(connection);
 
-// /qa/answers/:answer_id/helpful
 // const { Pool } = require('pg')
-
-// // node postgres
 // const pool = new Pool({
 //   host: 'localhost',
 //   database: 'qa',
@@ -42,17 +40,3 @@ module.exports.db = pgp(connection);
 //     return pool.query(text, params, callback)
 //   },
 // }
-
-// const connection = pool.connect((err) => {
-//   if (err) {
-//     console.log("Error");
-//   } else {
-//     console.log("DB Connected");
-//   }
-// })
-
-// module.exports.connection = connection;
-
-// inbound rule - specific port available to everyone
-
-// https://node-postgres.com/guides/project-structure

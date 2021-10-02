@@ -1,0 +1,52 @@
+router.get('/questions/:product_id', controller.getQuestions);
+
+router.get('/questions/:question_id/answers', controller.getAnswers);
+
+router.post('/questions', controller.postQuestions);
+
+router.post('/questions/:question_id/answers', controller.postAnswers);
+
+
+
+
+router.patch('/questions/:question_id/helpful', controller.patchHelpfulQuestions);
+http://localhost:3000/qa/questions/1/helpful
+SELECT * FROM questions WHERE questions.id = 1;
+
+10/1
+Status 200 OK
+Time: 69 ms
+Total: 118.63 ms
+size: 258 B
+
+router.patch('/questions/:question_id/report', controller.patchReportQuestions);
+http://localhost:3000/qa/questions/1/report
+SELECT * FROM questions WHERE questions.id = 1;
+
+10/1
+Status 200 OK
+Time: 56 ms
+Total: 62.99 ms
+size: 258 B
+
+
+
+router.patch('/answers/:answer_id/helpful', controller.patchHelpfulAnswers);
+http://localhost:3000/qa/answers/1/helpful
+SELECT * FROM answers WHERE answers.id = 1;
+
+10/1
+Status 200 OK
+Time: 78 ms
+Total: 88.84 ms
+size: 258 B
+
+router.patch('/answers/:answer_id/report', controller.patchReportAnswers);
+http://localhost:3000/qa/answers/1/report
+SELECT * FROM answers WHERE answers.id = 1;
+
+10/1
+Status 200 OK
+Time: 286 ms
+Total: 324 ms
+size: 258 B
