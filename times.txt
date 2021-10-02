@@ -7,6 +7,12 @@ Time: 6.49 s
 Total: 6.52 s
 size: 1.74 KB
 
+10/2 - index addition
+Status 200 OK
+Time: 5 ms
+Total: 11.78 ms
+size: 1.74 KB
+
 
 router.get('/questions/:question_id/answers', controller.getAnswers);
 http://localhost:3000/qa/questions/1/answers
@@ -15,6 +21,12 @@ http://localhost:3000/qa/questions/1/answers
 Status 200 OK
 Time: 16.67 s
 Total: 16.75 s
+size: 1.51 KB
+
+10/2 - index addition
+Status 200 OK
+Time: 5 ms
+Total: 13.78 ms
 size: 1.51 KB
 
 
@@ -56,6 +68,13 @@ Time: 69 ms
 Total: 118.63 ms
 size: 258 B
 
+10/2 - index addition
+Status 200 OK
+Time: 13 ms
+Total: 22.34 ms
+size: 258 B
+
+
 router.patch('/questions/:question_id/report', controller.patchReportQuestions);
 http://localhost:3000/qa/questions/1/report
 SELECT * FROM questions WHERE questions.id = 1;
@@ -64,6 +83,12 @@ SELECT * FROM questions WHERE questions.id = 1;
 Status 200 OK
 Time: 56 ms
 Total: 62.99 ms
+size: 258 B
+
+10/2 - index addition
+Status 200 OK
+Time: 8 ms
+Total: 14.97 ms
 size: 258 B
 
 
@@ -78,6 +103,12 @@ Time: 78 ms
 Total: 88.84 ms
 size: 258 B
 
+10/2
+Status 200 OK
+Time: 13ms
+Total: 23.78 ms
+size: 258 B
+
 router.patch('/answers/:answer_id/report', controller.patchReportAnswers);
 http://localhost:3000/qa/answers/1/report
 SELECT * FROM answers WHERE answers.id = 1;
@@ -86,4 +117,10 @@ SELECT * FROM answers WHERE answers.id = 1;
 Status 200 OK
 Time: 286 ms
 Total: 324 ms
+size: 258 B
+
+10/2 - index addition
+Status 200 OK
+Time: 9 ms
+Total: 18.2 ms
 size: 258 B

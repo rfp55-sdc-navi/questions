@@ -41,6 +41,7 @@ CREATE TABLE answers_photos (
 -- create index for product it
 -- CREATE INDEX questionsProductIdIndex ON questions(product_id);
 -- CREATE INDEX answersQuestionIdIndex ON answers(question_id);
+-- CREATE INDEX answersPhotosIdIndex ON answers_photos(answer_id);
 
 -- select *
 -- from pg_indexes
