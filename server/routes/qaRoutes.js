@@ -11,13 +11,13 @@ router.get('/questions/:question_id/answers', controller.getAnswers);
 router.post('/questions', controller.postQuestions);
 router.post('/questions/:question_id/answers', controller.postAnswers);
 
-// PUT /qa/questions/:question_id/helpful - Updates a question to show it was found helpful.
-// PUT /qa/questions/:question_id/report - Updates a question to show it was reported - the question will not be returned in GET request.
+// PATCH /qa/questions/:question_id/helpful - Updates a question to show it was found helpful.
+// PATCH /qa/questions/:question_id/report - Updates a question to show it was reported - the question will not be returned in GET request.
 router.patch('/questions/:question_id/helpful', controller.patchHelpfulQuestions);
 router.patch('/questions/:question_id/report', controller.patchReportQuestions);
 
-// PUT /qa/answers/:answer_id/helpful - Updates an answer to show it was found helpful.
-// PUT /qa/answers/:answer_id/report - Updates an answer to show it has been reported - the answer will not be returned in GET request
+// PATCH /qa/answers/:answer_id/helpful - Updates an answer to show it was found helpful.
+// PATCH /qa/answers/:answer_id/report - Updates an answer to show it has been reported - the answer will not be returned in GET request
 router.patch('/answers/:answer_id/helpful', controller.patchHelpfulAnswers);
 router.patch('/answers/:answer_id/report', controller.patchReportAnswers);
 

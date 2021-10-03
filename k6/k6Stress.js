@@ -6,47 +6,91 @@ export let options = {
   duration: '1s'
 };
 
-// GET /qa/questions
+// GET /qa/questions - FIX
 // export default function () {
 //   http.get('http://localhost:3000/qa/questions?page=1&count=5&product_id=40344');
 //   sleep(1);
 // }
 
 // GET /qa/questions/:question_id/answers
-export default function () {
-  http.get('http://localhost:3000/qa/questions/1/answers');
-  sleep(1);
-}
+// export default function () {
+//   http.get('http://localhost:3000/qa/questions/1/answers');
+//   sleep(1);
+// }
 
-// POST /qa/questions
+// POST /qa/questions - FIX
 
-export default function () {
-  let data = {
-    body: "123",
-    name: "test",
-    email: "test@gmail.com",
-    product_id: 40344
-  }
+// export default function () {
+//   let data = JSON.stringify({
+//     body: "123",
+//     name: "test",
+//     email: "test@gmail.com",
+//     product_id: 24
+//   });
 
-  let url = 'http://localhost:3000/qa/questions';
+//   let url = 'http://localhost:3000/qa/questions';
 
-  let headers = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
+//   let headers = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
 
-  http.post(url, data);
-}
+//   http.post(url, data);
+//   sleep(1);
+// }
 
 
 // POST /qa/questions/:question_id/answers
+// export default function () {
+//   let data = JSON.stringify({
+//     body: "123",
+//     name: "test",
+//     email: "test@gmail.com",
+//     photos: []
+//   });
 
-// PUT /qa/questions/:question_id/helpful
+//   let url = 'http://localhost:3000/qa/questions/3518965/answers';
 
-// PUT /qa/questions/:question_id/report
+//   let headers = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
 
-// PUT /qa/answers/:answer_id/helpful
+//   http.post(url, data);
+//   sleep(1);
+// }
 
-// PUT /qa/answers/:answer_id/report
+
+// PATCH /qa/questions/:question_id/helpful
+// export default function () {
+//   let url = 'http://localhost:3000/qa/questions/1/helpful';
+//   http.patch(url);
+//   sleep(1);
+// }
+
+
+// PATCH /qa/questions/:question_id/report
+// export default function () {
+//   let url = 'http://localhost:3000/qa/questions/1/report';
+//   http.patch(url);
+//   sleep(1);
+// }
+
+
+// PATCH /qa/answers/:answer_id/helpful
+// export default function () {
+//   let url = 'http://localhost:3000/qa/answers/1/helpful';
+//   http.patch(url);
+//   sleep(1);
+// }
+
+
+// PATCH /qa/answers/:answer_id/report
+// export default function () {
+//   let url = 'http://localhost:3000/qa/answers/1/report';
+//   http.patch(url);
+//   sleep(1);
+// }
 
