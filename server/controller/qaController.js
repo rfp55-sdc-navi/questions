@@ -3,7 +3,7 @@ const models = require('../model/qaModel');
 const getQuestions = function (req, res) {
   var product_id = req.query.product_id;
   var page = 1 || req.query.page;
-  var count = 5 || req.query.count;;
+  var count = 5 || req.query.count;
 
   models.getQuestions(product_id, page, count, (err, result) => {
     if (err) {

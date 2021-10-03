@@ -1,3 +1,4 @@
+GET QUESTIONS
 router.get('/questions/', controller.getQuestions);
 http://localhost:3000/qa/questions?product_id=40346&page=1&count=5
 
@@ -14,6 +15,7 @@ Total: 11.78 ms
 size: 1.74 KB
 
 
+GET ANSWERS
 router.get('/questions/:question_id/answers', controller.getAnswers);
 http://localhost:3000/qa/questions/1/answers
 
@@ -29,7 +31,9 @@ Time: 5 ms
 Total: 13.78 ms
 size: 1.51 KB
 
+----------------------------------------------------------------------------------------------------
 
+POST QUESTIONS
 router.post('/questions', controller.postQuestions);
 http://localhost:3000/qa/questions
 {
@@ -53,6 +57,7 @@ size: 258 B
 
 
 
+POST ANSWERS
 router.post('/questions/:question_id/answers', controller.postAnswers);
 http://localhost:3000/qa/questions/3518965/answers
 
@@ -76,7 +81,8 @@ Total: 40.5 ms
 size: 258 B
 
 
-
+--------------------------------------------------------------------------------------------------------------
+PATCH HELPFUL QUESTIONS
 router.patch('/questions/:question_id/helpful', controller.patchHelpfulQuestions);
 http://localhost:3000/qa/questions/1/helpful
 SELECT * FROM questions WHERE questions.id = 1;
@@ -93,7 +99,7 @@ Time: 13 ms
 Total: 22.34 ms
 size: 258 B
 
-
+PATCH REPORT QUESTIONS
 router.patch('/questions/:question_id/report', controller.patchReportQuestions);
 http://localhost:3000/qa/questions/1/report
 SELECT * FROM questions WHERE questions.id = 1;
@@ -111,7 +117,9 @@ Total: 14.97 ms
 size: 258 B
 
 
+--------------------------------------------------------------------------------------------------------------
 
+PATCH HELPFUL ANSWERS
 router.patch('/answers/:answer_id/helpful', controller.patchHelpfulAnswers);
 http://localhost:3000/qa/answers/1/helpful
 SELECT * FROM answers WHERE answers.id = 1;
@@ -128,6 +136,7 @@ Time: 13ms
 Total: 23.78 ms
 size: 258 B
 
+PATCH REPORT ANSWERS
 router.patch('/answers/:answer_id/report', controller.patchReportAnswers);
 http://localhost:3000/qa/answers/1/report
 SELECT * FROM answers WHERE answers.id = 1;
