@@ -18,6 +18,7 @@ size: 1.74 KB
 GET ANSWERS
 router.get('/questions/:question_id/answers', controller.getAnswers);
 http://localhost:3000/qa/questions/1/answers
+SELECT * FROM answers WHERE answers.question_id = 1;
 
 10/2
 Status 200 OK
@@ -36,6 +37,8 @@ size: 1.51 KB
 POST QUESTIONS
 router.post('/questions', controller.postQuestions);
 http://localhost:3000/qa/questions
+SELECT * FROM questions WHERE questions.product_id = 40344 ORDER BY id DESC;
+
 {
    "body":"123",
    "name": "test",
@@ -60,6 +63,7 @@ size: 258 B
 POST ANSWERS
 router.post('/questions/:question_id/answers', controller.postAnswers);
 http://localhost:3000/qa/questions/3518965/answers
+SELECT * FROM answers WHERE answers.question_id = 3518965 ORDER BY id DESC;
 
 {
    "body":"123",

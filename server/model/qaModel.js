@@ -1,21 +1,24 @@
 const db = require('../db').db;
 
+//        CASE WHEN answers = null THEN '{}'::json END
 const getQuestions = function (product_id, page, count, callback) {
   db.query(`
-      SELECT product_id, json_agg(
+      SELECT CAST ( product_id AS TEXT ), json_agg(
         json_build_object(
           'question_id', questions.id,
           'question_body', questions.body,
-          'question_date', TO_TIMESTAMP(questions.date_written/1000),
+          'question_date', TO_CHAR(TO_TIMESTAMP(questions.date_written / 1000), 'YYYY-MM-DD"T"HH24:MI:SS"Z"'),
           'asker_name', questions.asker_name,
           'question_helpfulness', questions.helpful,
           'reported', CASE WHEN questions.reported = 0 THEN false END,
-          'answers', (SELECT answers FROM (
+          'answers', (SELECT
+            coalesce(answers, '{}'::json)
+            FROM (
             SELECT json_object_agg(
               answers.id, json_build_object(
                 'id', answers.id,
                 'body', answers.body,
-                'date', TO_TIMESTAMP(answers.date_written/1000),
+                'date', TO_CHAR(TO_TIMESTAMP(answers.date_written / 1000), 'YYYY-MM-DD"T"HH24:MI:SS"Z"'),
                 'answerer_name', answers.answerer_name,
                 'helpfulness', answers.helpful,
                 'photos', (
@@ -42,17 +45,20 @@ const getQuestions = function (product_id, page, count, callback) {
     })
 };
 
+//'date', TO_TIMESTAMP(answers.date_written),
+// TO_CHAR(TO_TIMESTAMP(answers.date_written / 1000), 'YYYY-MM-DD"T"HH24:MI:SS"Z"')
+//  'date', TO_TIMESTAMP(answers.date_written/1000, 'YYYY-MM-DD"T"HH24:MI:SS"Z"'),
 const getAnswers = function (question_id, page, count, callback) {
   db.query(`
     SELECT json_build_object(
-        'question', ${question_id},
+        'question', CAST ( ${question_id} AS TEXT ),
         'page', ${page},
         'count', ${count},
         'results', json_agg(
           json_build_object(
             'answer_id', answers.id,
             'body', answers.body,
-            'date', TO_TIMESTAMP(answers.date_written / 1000),
+            'date', TO_CHAR(TO_TIMESTAMP(answers.date_written / 1000), 'YYYY-MM-DD"T"HH24:MI:SS"Z"'),
             'answerer_name', answers.answerer_name,
             'helpfulness', answers.helpful,
             'photos', (
