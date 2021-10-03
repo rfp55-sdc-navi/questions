@@ -37,11 +37,27 @@ CREATE TABLE answers_photos (
   photo_url TEXT
 );
 
--- TODO - create indices
--- create index for product it
+-----------INDEX-------------
 -- CREATE INDEX questionsProductIdIndex ON questions(product_id);
 -- CREATE INDEX answersQuestionIdIndex ON answers(question_id);
 -- CREATE INDEX answersPhotosIdIndex ON answers_photos(answer_id);
+
+
+
+-----------ETL-------------
+
+-- COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
+
+-- COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
+
+-- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
+
+
+
+
+
+
+-----------Notes-------------
 
 -- select *
 -- from pg_indexes
@@ -62,13 +78,6 @@ CREATE TABLE answers_photos (
 -- SELECT pg_get_serial_sequence('questions', 'id');
 
 
------------ETL-------------
-
--- COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/questions.csv' DELIMITER ',' CSV HEADER;
-
--- COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers.csv' DELIMITER ',' CSV HEADER;
-
--- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
 
 
 

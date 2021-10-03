@@ -36,7 +36,7 @@ http://localhost:3000/qa/questions
    "body":"123",
    "name": "test",
    "email": "test@gmail.com",
-   "photos": []
+   "product_id": 40344
 }
 
 10/1
@@ -45,15 +45,34 @@ Time: 36 ms
 Total: 41.43 ms
 size: 258 B
 
+10/2 - index addition
+Status 200 OK
+Time: 9 ms
+Total: 11.77 ms
+size: 258 B
+
 
 
 router.post('/questions/:question_id/answers', controller.postAnswers);
 http://localhost:3000/qa/questions/3518965/answers
 
+{
+   "body":"123",
+   "name": "test",
+   "email": "test@gmail.com",
+   "photos": []
+}
+
 10/1
 Status 200 OK
 Time: 49 ms
 Total: 61.82 ms
+size: 258 B
+
+10/2 - index addition
+Status 200 OK
+Time: 17 ms
+Total: 40.5 ms
 size: 258 B
 
 
