@@ -30,7 +30,11 @@ const getAnswers = function (req, res) {
       // res.send(result["json_build_object"]);
       // res.send(result);
       // console.log(result[0].json_build_object.results);
-      res.send(result[0].json_build_object);
+      if (result.length === 0) {
+        res.send({});
+      } else {
+        res.send(result[0].json_build_object);
+      }
     }
   })
 };

@@ -14,12 +14,11 @@ export let options = {
 // }
 
 // GET /qa/questions/:question_id/answers
-export default function () {
-  let randomQuestionId = Math.floor(Math.random() * (3518992 - 1 + 1)) + 1;
-  http.get(`http://localhost:3001/qa/questions/25/answers`);
-  sleep(1);
-}
-// 718260
+// export default function () {
+//   let randomQuestionId = Math.floor(Math.random() * (3518992 - 1 + 1)) + 1;
+//   http.get(`http://localhost:3001/qa/questions/${randomQuestionId}/answers`);
+//   sleep(1);
+// }
 
 // POST /qa/questions
 // export default function () {
