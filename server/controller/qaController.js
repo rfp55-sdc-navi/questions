@@ -10,6 +10,7 @@ const getQuestions = function (req, res) {
       console.log('getQuestions error' + err);
       res.sendStatus(500)
     } else {
+      // console.log(result[0].results)
       res.send(result[0]);
     }
   })
@@ -28,6 +29,7 @@ const getAnswers = function (req, res) {
       // data.rows[0].json_build_object
       // res.send(result["json_build_object"]);
       // res.send(result);
+      console.log(result[0].json_build_object.results);
       res.send(result[0].json_build_object);
     }
   })
@@ -86,13 +88,11 @@ const patchReportQuestions = function (req, res) {
 
 const patchHelpfulAnswers = function (req, res) {
   var answer_id = req.params.answer_id;
-  console.log(req);
   models.patchHelpfulAnswers(answer_id, (err, result) => {
     if (err) {
       console.log('patchHelpfulAnswers error' + err);
       res.sendStatus(500)
     } else {
-      console.log("success")
       res.send(result);
     }
   })
