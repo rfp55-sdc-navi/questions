@@ -1,5 +1,5 @@
 GET QUESTIONS
-router.get('/questions/', controller.getQuestions);
+router.get('/questions', controller.getQuestions);
 http://localhost:3001/qa/questions?product_id=40346&page=1&count=5
 
 10/2
