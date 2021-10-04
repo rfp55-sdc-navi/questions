@@ -2,19 +2,55 @@ const app = require('../server/server.js').app;
 const request = require('supertest');
 
 
-// GET /qa/questions - Retrieves a list of questions for a particular product - does not include any reported questions.
-// GET /qa/questions/:question_id/answers - Returns answers for a given question - does not include any reported answers.
+// GET /qa/questions
 describe('GET /qa/questions', function () {
-  it('responds with 201 status code', function (done) {
+  it('responds with 200 status code and with json object', function (done) {
     request(app)
-      .post('/qa/questions')
-      .expect(201, done);
+      .get('/qa/questions?product_id=40346&page=1&count=5')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
+
+  it('responds with product_id and results key in the json object', function (done) {
+    request(app)
+      .get('/qa/questions?product_id=40346&page=1&count=5')
+      .set('Accept', 'application/json')
+      .expect(function (result) {
+        expect(result[0]["product_id"]).not.toBeNull();
+        expect(result[0]["results"]).not.toBeNull();
+      })
+      .expect(200, done);
   });
 });
 
 
+// GET /qa/questions/:question_id/answers
+describe('GET /qa/questions/:question_id/answers', function () {
+  it('responds with 200 status code and with json object', function (done) {
+    request(app)
+      .get('/qa/questions/1/answers')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
 
-// POST /qa/questions - Adds a question for the given product
+  it('responds with question, page, count, and results key in the json object', function (done) {
+    request(app)
+      .get('/qa/questions/1/answers')
+      .set('Accept', 'application/json')
+      .expect(function (result) {
+        expect(result[0].json_build_object["question"]).not.toBeNull();
+        expect(result[0].json_build_object["page"]).not.toBeNull();
+        expect(result[0].json_build_object["count"]).not.toBeNull();
+        expect(result[0].json_build_object["results"]).not.toBeNull();
+      })
+      .expect(200, done);
+  });
+});
+
+
+// POST /qa/questions
 describe('POST /qa/questions', function () {
   it('responds with 201 status code', function (done) {
     request(app)
@@ -23,7 +59,8 @@ describe('POST /qa/questions', function () {
   });
 });
 
-// POST /qa/questions/:question_id/answers - Adds an answer for the given question
+
+// POST /qa/questions/:question_id/answers
 describe('POST /qa/questions/:question_id/answers', function () {
   it('responds with 200 status code', function (done) {
     request(app)
@@ -32,7 +69,8 @@ describe('POST /qa/questions/:question_id/answers', function () {
   });
 });
 
-// PATCH /qa/questions/:question_id/helpful - Updates a question to show it was found helpful.
+
+// PATCH /qa/questions/:question_id/helpful
 describe('PATCH /qa/questions/:question_id/helpful', function () {
   it('responds with 200 status code', function (done) {
     request(app)
@@ -41,7 +79,8 @@ describe('PATCH /qa/questions/:question_id/helpful', function () {
   });
 });
 
-// PATCH /qa/questions/:question_id/report - Updates a question to show it was reported - the question will not be returned in GET request.
+
+// PATCH /qa/questions/:question_id/report
 describe('PATCH /qa/questions/:question_id/report', function () {
   it('responds with 200 status code', function (done) {
     request(app)
@@ -51,7 +90,7 @@ describe('PATCH /qa/questions/:question_id/report', function () {
 });
 
 
-// PATCH /qa/answers/:answer_id/helpful - Updates an answer to show it was found helpful.
+// PATCH /qa/answers/:answer_id/helpful
 describe('PATCH /qa/answers/:answer_id/helpful', function () {
   it('responds with 200 status code', function (done) {
     request(app)
@@ -60,7 +99,8 @@ describe('PATCH /qa/answers/:answer_id/helpful', function () {
   });
 });
 
-// PATCH /qa/answers/:answer_id/report - Updates an answer to show it has been reported - the answer will not be returned in GET request
+
+// PATCH /qa/answers/:answer_id/report
 describe('PATCH /qa/answers/:answer_id/report', function () {
   it('responds with 200 status code', function (done) {
     request(app)

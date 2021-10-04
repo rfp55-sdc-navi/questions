@@ -10,7 +10,7 @@ const getQuestions = function (req, res) {
       console.log('getQuestions error' + err);
       res.sendStatus(500)
     } else {
-      // console.log(result[0].results)
+      // console.log(result[0]);
       res.send(result[0]);
     }
   })
