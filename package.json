@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon ./server/server.js",
     "test": "jest",
-    "k6test": "k6 run ./k6/k6Stress.js"
+    "k6test": "k6 run ./k6/script.js"
   },
   "repository": {
     "type": "git",
