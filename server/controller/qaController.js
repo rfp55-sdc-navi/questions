@@ -29,7 +29,7 @@ const getAnswers = function (req, res) {
       // data.rows[0].json_build_object
       // res.send(result["json_build_object"]);
       // res.send(result);
-      console.log(result[0].json_build_object.results);
+      // console.log(result[0].json_build_object.results);
       res.send(result[0].json_build_object);
     }
   })
@@ -43,6 +43,7 @@ const postQuestions = function (req, res) {
       console.log('postQuestions error ' + err);
       res.sendStatus(500)
     } else {
+      res.status(201);
       res.send(result);
     }
   })

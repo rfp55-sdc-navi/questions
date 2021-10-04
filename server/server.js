@@ -19,6 +19,8 @@ app.listen(port, () => {
   console.log(`Questions and Answers server listening at http://localhost:${port}`)
 })
 
+module.exports.app = app;
+
 
 
 // https://www.digitalocean.com/community/tutorials/nodejs-compression

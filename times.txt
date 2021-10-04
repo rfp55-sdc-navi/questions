@@ -1,6 +1,6 @@
 GET QUESTIONS
 router.get('/questions/', controller.getQuestions);
-http://localhost:3000/qa/questions?product_id=40346&page=1&count=5
+http://localhost:3001/qa/questions?product_id=40346&page=1&count=5
 
 10/2
 Status 200 OK
@@ -17,7 +17,7 @@ size: 1.74 KB
 
 GET ANSWERS
 router.get('/questions/:question_id/answers', controller.getAnswers);
-http://localhost:3000/qa/questions/1/answers
+http://localhost:3001/qa/questions/1/answers
 SELECT * FROM answers WHERE answers.question_id = 1;
 
 10/2
@@ -36,7 +36,7 @@ size: 1.51 KB
 
 POST QUESTIONS
 router.post('/questions', controller.postQuestions);
-http://localhost:3000/qa/questions
+http://localhost:3001/qa/questions
 SELECT * FROM questions WHERE questions.product_id = 40344 ORDER BY id DESC;
 
 {
@@ -62,7 +62,7 @@ size: 258 B
 
 POST ANSWERS
 router.post('/questions/:question_id/answers', controller.postAnswers);
-http://localhost:3000/qa/questions/3518965/answers
+http://localhost:3001/qa/questions/3518965/answers
 SELECT * FROM answers WHERE answers.question_id = 3518965 ORDER BY id DESC;
 
 {
@@ -88,7 +88,7 @@ size: 258 B
 --------------------------------------------------------------------------------------------------------------
 PATCH HELPFUL QUESTIONS
 router.patch('/questions/:question_id/helpful', controller.patchHelpfulQuestions);
-http://localhost:3000/qa/questions/1/helpful
+http://localhost:3001/qa/questions/1/helpful
 SELECT * FROM questions WHERE questions.id = 1;
 
 10/1
@@ -105,7 +105,7 @@ size: 258 B
 
 PATCH REPORT QUESTIONS
 router.patch('/questions/:question_id/report', controller.patchReportQuestions);
-http://localhost:3000/qa/questions/1/report
+http://localhost:3001/qa/questions/1/report
 SELECT * FROM questions WHERE questions.id = 1;
 
 10/1
@@ -125,7 +125,7 @@ size: 258 B
 
 PATCH HELPFUL ANSWERS
 router.patch('/answers/:answer_id/helpful', controller.patchHelpfulAnswers);
-http://localhost:3000/qa/answers/1/helpful
+http://localhost:3001/qa/answers/1/helpful
 SELECT * FROM answers WHERE answers.id = 1;
 
 10/1
@@ -142,7 +142,7 @@ size: 258 B
 
 PATCH REPORT ANSWERS
 router.patch('/answers/:answer_id/report', controller.patchReportAnswers);
-http://localhost:3000/qa/answers/1/report
+http://localhost:3001/qa/answers/1/report
 SELECT * FROM answers WHERE answers.id = 1;
 
 10/1

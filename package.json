@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon ./server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "k6test": "k6 run ./k6/k6Stress.js"
   },
   "repository": {
