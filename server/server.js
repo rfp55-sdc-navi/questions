@@ -2,7 +2,7 @@ const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
-const port = 3000
+const port = 3001
 
 var router = require('./routes/qaRoutes');
 
@@ -10,7 +10,7 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.set('port', 3000);
+app.set('port', 3001);
 
 app.use('/qa', router);
 app.use('/hello', (req, res) => res.status(200).send('hello'));

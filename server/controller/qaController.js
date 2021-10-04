@@ -86,6 +86,7 @@ const patchReportQuestions = function (req, res) {
 
 const patchHelpfulAnswers = function (req, res) {
   var answer_id = req.params.answer_id;
+  console.log(req);
   models.patchHelpfulAnswers(answer_id, (err, result) => {
     if (err) {
       console.log('patchHelpfulAnswers error' + err);

@@ -1,6 +1,5 @@
 const db = require('../db').db;
 
-//        CASE WHEN answers = null THEN '{}'::json END
 const getQuestions = function (product_id, page, count, callback) {
   db.query(`
       SELECT CAST ( product_id AS TEXT ), json_agg(
