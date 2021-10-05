@@ -1,12 +1,12 @@
 const pgp = require('pg-promise')(/* options */);
-const config = require('../../config');
+const config = require('../../configg');
 
 const connection = {
-  host: 'localhost',
-  database: 'qa',
-  user: 'root',
-  port: 5432,
-  password: '123'
+  host: config.host,
+  database: config.database,
+  user: config.user,
+  port: config.port,
+  password: config.password
 };
 
 module.exports.db = pgp(connection);
