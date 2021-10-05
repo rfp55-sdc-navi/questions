@@ -53,7 +53,7 @@ CREATE TABLE answers_photos (
 -- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
 
 
-
+-- pg_dump -U some_user -W -f backup_file.sql -t some_table your_datbase
 
 
 
