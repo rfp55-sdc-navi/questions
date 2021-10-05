@@ -1,4 +1,5 @@
 const pgp = require('pg-promise')(/* options */);
+const config = require('../../config');
 
 const connection = {
   host: 'localhost',
