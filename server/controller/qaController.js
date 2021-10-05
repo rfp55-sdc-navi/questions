@@ -47,8 +47,7 @@ const postQuestions = function (req, res) {
       console.log('postQuestions error ' + err);
       res.sendStatus(500)
     } else {
-      res.status(201);
-      res.send(result);
+      res.sendStatus(201);
     }
   })
 };
@@ -62,7 +61,7 @@ const postAnswers = function (req, res) {
       console.log('postAnswers error ' + err);
       res.sendStatus(500)
     } else {
-      res.send(result);
+      res.sendStatus(201);
     }
   })
 };
@@ -74,7 +73,7 @@ const patchHelpfulQuestions = function (req, res) {
       console.log('patchHelpfulQuestions error' + err);
       res.sendStatus(500)
     } else {
-      res.send(result);
+      res.sendStatus(204);
     }
   })
 };
@@ -86,7 +85,7 @@ const patchReportQuestions = function (req, res) {
       console.log('patchReportQuestions error' + err);
       res.sendStatus(500)
     } else {
-      res.send(result);
+      res.sendStatus(204);
     }
   })
 };
@@ -98,7 +97,7 @@ const patchHelpfulAnswers = function (req, res) {
       console.log('patchHelpfulAnswers error' + err);
       res.sendStatus(500)
     } else {
-      res.send(result);
+      res.sendStatus(204);
     }
   })
 };
@@ -110,7 +109,7 @@ const patchReportAnswers = function (req, res) {
       console.log('patchReportAnswers error' + err);
       res.sendStatus(500)
     } else {
-      res.send(result);
+      res.sendStatus(204);
     }
   })
 };

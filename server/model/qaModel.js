@@ -123,6 +123,7 @@ const postQuestions = function (dataBody, callback) {
   var reportedQuestion = 0;
   var helpfulQuestion = 0;
 
+
   db.query(`INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful)
     VALUES (${productID}, '${bodyQuestion}', '${dateQuestion}', '${nameQuestion}', '${emailQuestion}',
     ${reportedQuestion}, ${helpfulQuestion});`)

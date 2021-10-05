@@ -1,9 +1,14 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
 
+// export let options = {
+//   vus: 1000,
+//   duration: '30s'
+// };
+
 export let options = {
-  vus: 1000,
-  duration: '30s'
+  vus: 1,
+  duration: '5s'
 };
 
 // GET /qa/questions
@@ -28,7 +33,7 @@ export let options = {
 //     body: "123",
 //     name: "test",
 //     email: "test@gmail.com",
-//     product_id: 1000000
+//     product_id: 40344
 //   });
 
 //   let url = 'http://localhost:3001/qa/questions';
@@ -39,32 +44,32 @@ export let options = {
 //     }
 //   };
 
-//   http.post(url, data);
+//   http.post(url, data, headers);
 //   sleep(1);
 // }
 
 
 // POST /qa/questions/:question_id/answers
-// export default function () {
-//   let data = JSON.stringify({
-//     body: "123",
-//     name: "test",
-//     email: "test@gmail.com",
-//     photos: []
-//   });
+export default function () {
+  let data = JSON.stringify({
+    body: "123",
+    name: "test",
+    email: "test@gmail.com",
+    photos: []
+  });
 
-//   let randomQuestionId = Math.floor(Math.random() * (3518992 - 1 + 1)) + 1;
-//   let url = `http://localhost:3001/qa/questions/${randomQuestionId}/answers`;
+  let randomQuestionId = Math.floor(Math.random() * (3518992 - 1 + 1)) + 1;
+  let url = `http://localhost:3001/qa/questions/${randomQuestionId}/answers`;
 
-//   let headers = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
+  let headers = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
 
-//   http.post(url, data);
-//   sleep(1);
-// }
+  http.post(url, data);
+  sleep(1);
+}
 
 
 // PATCH /qa/questions/:question_id/helpful
