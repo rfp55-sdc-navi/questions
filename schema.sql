@@ -3,11 +3,11 @@
 -- psql postgres -U root
 -- brew services stop postgresql
 
-CREATE DATABASE qa;
+-- CREATE DATABASE qa;
 
-DROP TABLE IF EXISTS answers_photos;
-DROP TABLE IF EXISTS answers;
-DROP TABLE IF EXISTS questions;
+-- DROP TABLE IF EXISTS answers_photos;
+-- DROP TABLE IF EXISTS answers;
+-- DROP TABLE IF EXISTS questions;
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
