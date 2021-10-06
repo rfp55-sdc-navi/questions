@@ -18,6 +18,8 @@ size: 1.74 KB
 GET ANSWERS
 router.get('/questions/:question_id/answers', controller.getAnswers);
 http://localhost:3001/qa/questions/1/answers
+/qa/questions/330110/answers
+
 SELECT * FROM answers WHERE answers.question_id = 1;
 
 10/2
@@ -126,6 +128,8 @@ size: 258 B
 PATCH HELPFUL ANSWERS
 router.patch('/answers/:answer_id/helpful', controller.patchHelpfulAnswers);
 http://localhost:3001/qa/answers/1/helpful
+/qa/answers/277234/report
+
 SELECT * FROM answers WHERE answers.id = 1;
 
 10/1
@@ -143,6 +147,8 @@ size: 258 B
 PATCH REPORT ANSWERS
 router.patch('/answers/:answer_id/report', controller.patchReportAnswers);
 http://localhost:3001/qa/answers/1/report
+/qa/answers/277234/report
+
 SELECT * FROM answers WHERE answers.id = 1;
 
 10/1
