@@ -53,8 +53,6 @@ CREATE TABLE answers_photos (
 -- COPY answers_photos (id, answer_id, photo_url) FROM '/Users/JohnFa 1/Desktop/Hack Reactor/SDC/questionsAPI/data/answers_photos.csv' DELIMITER ',' CSV HEADER;
 
 
--- pg_dump -U some_user -W -f backup_file.sql -t some_table your_datbase
-
 
 
 -----------Notes-------------
@@ -163,3 +161,9 @@ CREATE TABLE answers_photos (
 -- ('','','','','','','','');
 -- INSERT INTO `photos` (`id`,`answer_id`,`url`) VALUES
 -- ('','','');
+
+
+
+
+
+-- pg_dump -h localhost qa | psql -U root -h ec2-3-141-44-68.us-east-2.compute.amazonaws.com qa

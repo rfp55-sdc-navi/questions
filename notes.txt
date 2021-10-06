@@ -1,0 +1,52 @@
+Port Forwarding
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+Dump
+pg_dump -U some_user -W -f backup_file.sql -t some_table your_database
+
+pg_dump -h localhost <db-name> | psql -U <superuser-name> -h <vm-public-ip-address> <db-name>
+
+
+Log into postgresql in ubuntu
+sudo -u postgres psql
+postgres=#\password​
+
+Install Node and Git on virtual instance
+sudo apt-get update
+sudo apt-get upgrade -y
+
+Node js
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+Git
+sudo apt-get install git
+
+Start DB instance
+3.141.44.68
+
+Open an SSH client.
+Locate your private key file. The key used to launch this instance is SDC.pem
+Run this command, if necessary, to ensure your key is not publicly viewable.
+ chmod 400 SDC.pem
+Connect to your instance using its Public DNS:
+ ec2-3-141-44-68.us-east-2.compute.amazonaws.com
+Example:
+ ssh -i "SDC.pem" ubuntu@ec2-3-141-44-68.us-east-2.compute.amazonaws.com
+
+
+Start Server instance
+3.22.164.57
+Open an SSH client.
+Locate your private key file. The key used to launch this instance is SDC-server.pem
+Run this command, if necessary, to ensure your key is not publicly viewable.
+ chmod 400 SDC-server.pem
+Connect to your instance using its Public DNS:
+ ec2-3-22-164-57.us-east-2.compute.amazonaws.com
+Example:
+ ssh -i "SDC-server.pem" ubuntu@ec2-3-22-164-57.us-east-2.compute.amazonaws.com
+ 
+
+
+IP address
+http://3.22.164.57/qa/questions/330110/answers
