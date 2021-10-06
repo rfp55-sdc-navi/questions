@@ -88,7 +88,7 @@ size: 258 B
 --------------------------------------------------------------------------------------------------------------
 PATCH HELPFUL QUESTIONS
 router.patch('/questions/:question_id/helpful', controller.patchHelpfulQuestions);
-http://localhost:3001/qa/questions/1/helpful
+http://localhost:3001/qa/questions/3518965/helpful
 SELECT * FROM questions WHERE questions.id = 1;
 
 10/1
@@ -105,7 +105,7 @@ size: 258 B
 
 PATCH REPORT QUESTIONS
 router.patch('/questions/:question_id/report', controller.patchReportQuestions);
-http://localhost:3001/qa/questions/1/report
+http://localhost:3001/qa/questions/3518965/report
 SELECT * FROM questions WHERE questions.id = 1;
 
 10/1
