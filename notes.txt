@@ -1,5 +1,5 @@
 Port Forwarding
-sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3001
 
 Dump
 pg_dump -U some_user -W -f backup_file.sql -t some_table your_database
@@ -76,3 +76,32 @@ const config = {
 }
 
 module.exports = config;
+
+
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g
+                 inactive=60m use_temp_path=off;
+upstream sdcgroup {
+  least_conn;
+  keepalive 500;
+  server 18.222.90.65:80;
+  server 18.221.234.106:80;
+}
+
+server {
+  listen 80 backlog=4096;
+  gzip on;
+
+  location / {
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+    proxy_pass http://sdcgroup;
+
+    proxy_cache my_cache;
+    proxy_cache_valid any 10m;
+    add_header X-Cache-Status $upstream_cache_status;
+  }
+
+  location /loaderio-1bc3ea88d29496de4e135aa65cc6e0d9 {
+    return 200 'loaderio-1bc3ea88d29496de4e135aa65cc6e0d9';
+  }
+}
