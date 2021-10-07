@@ -105,3 +105,14 @@ server {
     return 200 'loaderio-1bc3ea88d29496de4e135aa65cc6e0d9';
   }
 }
+
+
+const config = {
+  host: '3.19.74.253',
+  database: 'qa',
+  user: 'root',
+  port: 5432,
+  password: '123'
+}
+
+module.exports = config;
