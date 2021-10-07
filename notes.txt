@@ -46,6 +46,9 @@ Connect to your instance using its Public DNS:
 Example:
  ssh -i "SDC-server.pem" ubuntu@ec2-3-22-164-57.us-east-2.compute.amazonaws.com
 
+Git clone
+git clone https://github.com/rfp55-sdc-navi/questions.git
+
 
 IP address
 http://3.22.164.57/qa/questions/330110/answers
@@ -59,3 +62,17 @@ Configg DB IP address
 
 Port Forwarding
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3001
+
+
+
+vim configg.js
+
+const config = {
+  host: '3.19.74.253',
+  database: 'qa',
+  user: 'root',
+  port: 5432,
+  password: '123'
+}
+
+module.exports = config;
