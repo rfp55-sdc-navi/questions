@@ -11,17 +11,17 @@ Question and Answers API
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The objective of the System Design Capstone was to build out the API to support an existing Front End Capstone e-commerce application. The goal is to replace the existing API with a back end system that can support the full data set for the project and can scale to meet the demands of production traffic.
+The objective of the System Design Capstone was to build out the API to support an existing Front End Capstone e-commerce application. The goal is to replace the existing API with a back end system that can support the full data set for the project and can scale to meet the demands of production traffic, transforming from a monolithic architecture to a scalable microservice architecture.
 
-I was in charge of one of the services, Questions and Answers that make up the full API. This project requires us to first design a database and server that meet the requirements of your application, and then deploy and scale this service to support (a minimum of) 100 requests per second on EC2 using a t2.micro instance.
+I was in charge of one of the services, Questions and Answers, that make up the full API. The database was designed using PostgreSQL and server was designed using Express. The application was then deployed using Amazon Web Services and scaled to support (a minimum of) 100 requests per second, error rate of less than 1%, and latency of less than 2000 ms, on EC2 using a t2.micro instance.
 
 Objectives
-* Design and multiple database options to analyze and compare, selecting one database option
-* Transform the existing application data and load it into the database
+* Design and multiple database options (PostgreSQL and MongoDB) to analyze and compare, selecting one database option
+* Transform the existing application data and load it into the database by performing an ETL Process
 * Design and build an API server to provide data to the client in the format specified by the API documentation
-* Optimize your individual service by analyzing query times and server responses
-* Deploy your service and integrate it successfully with the FEC web application
-* Measure and improve the performance of your service at scale
+* Optimize your individual service by analyzing query times and server responses by testing with k6
+* Deploy your service and integrate it successfully with the e-commerce web application
+* Measure and improve the performance of your service at scale by testing with loader.io
 * Work as a team and scale your application's architecture to support loads up to tens of thousands of requests per second.
 
 ### Built With
@@ -35,10 +35,11 @@ Objectives
 ### Test results with Loader.io
 Get Questions
 10,000 requests per second using AWS t2 micro instance
+![GQ][GQ]
 
 Get Answers
 10,000 requests per second using AWS t2 micro instance
-
+![GA][GA]
 
 
 ## System Architecture
@@ -67,3 +68,5 @@ Project Link: [https://github.com/rfp55-sdc-navi/questions/tree/main](https://gi
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [system_arch]: images/system_arch.png
+[GA]: images/GA.png
+[GQ]: images/GQ.png
