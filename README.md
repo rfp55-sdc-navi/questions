@@ -29,16 +29,33 @@ Objectives
 * [Express](https://expressjs.com/) - Express was chosen for it's minimal interface and flexible HTTP routing methods
 * [PostgreSQL](https://www.postgresql.org/) - PostgreSQL is used here as a robust and stable open source database
 * [NGINX](https://www.nginx.com/) - NGINX enables load balancing HTTP traffic between between many routers
+* [loader.io](https://loader.io/) - Loader.io is used to stress test the performance of our system
 
 
 ## Questions & Answers
 ### Test results with Loader.io
 Get Questions
-10,000 requests per second using AWS t2 micro instance
+10,000 clients over 20 seconds using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
+
+Response Time (Latency): 11 ms
+
+Throughput: 9,996.35 RPS (Requests process per second)
+11,995,620 RPM (Requests process per minute)
+
+Error Rate: 0.0% under load
+
 ![GQ][GQ]
 
 Get Answers
-10,000 requests per second using AWS t2 micro instance
+10,000 clients over 20 seconds using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
+
+Response Time (Latency): 11 ms
+
+Throughput: 9,996.5 RPS (Requests process per second)
+11,995,800 RPM (Requests process per minute)
+
+Error Rate: 0.0% under load
+
 ![GA][GA]
 
 
