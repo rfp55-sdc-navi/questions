@@ -126,3 +126,19 @@ cd into questions
 npm i
 create configg file with config settings above, host IP address refers to database instance IP address
 start server
+
+NGINXLB2
+http://3.144.40.111/qa/questions?product_id=403446
+
+NGINXLB1
+http://18.221.234.106/qa/questions?product_id=40348
+
+NGINX
+http://18.217.210.137/qa/questions?product_id=40349
+
+SDC-server
+http://18.219.194.32/qa/questions?product_id=40351
+
+
+https://loader.io/tests/f18d63d98a4cbd021f95deafce202e7e
+Loader - 18.217.210.137
