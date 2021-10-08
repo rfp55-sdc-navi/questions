@@ -33,10 +33,13 @@ Objectives
 
 ## Questions & Answers
 ### Test results with Loader.io
+Get Questions
+10,000 requests per second using AWS t2 micro instance
 
-Result with 30,000 requests per second using x2Large AWS instance as Nginx server (note: having 3 local machines to run the same test simultaneously)
+Get Answers
+10,000 requests per second using AWS t2 micro instance
 
-Result with 8,000 requests per second using free tier micro AWS instance as Nginx server
+
 
 ## System Architecture
 ![System Architecture][system_arch]

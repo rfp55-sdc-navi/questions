@@ -2,6 +2,9 @@ GET QUESTIONS
 router.get('/questions', controller.getQuestions);
 http://localhost:3001/qa/questions?product_id=40346&page=1&count=5
 
+/qa/questions?product_id=%{*:900000-1000000}
+/qa/questions/%{*:3150000-3500000}/answers
+
 10/2
 Status 200 OK
 Time: 6.49 s
@@ -19,6 +22,7 @@ GET ANSWERS
 router.get('/questions/:question_id/answers', controller.getAnswers);
 http://localhost:3001/qa/questions/1/answers
 /qa/questions/330110/answers
+qa/questions/3167115/answers
 
 SELECT * FROM answers WHERE answers.question_id = 1;
 
