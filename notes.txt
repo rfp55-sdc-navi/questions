@@ -116,3 +116,13 @@ const config = {
 }
 
 module.exports = config;
+
+New Server
+Save PEM file
+SSH into ubuntu
+Install update, node, git
+Clone repo
+cd into questions
+npm i
+create configg file with config settings above, host IP address refers to database instance IP address
+start server
