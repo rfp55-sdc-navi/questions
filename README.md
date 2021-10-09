@@ -43,8 +43,8 @@ GET Questions
 
 * Response Time (Latency): 11 ms
 
-* Throughput: 199,927 RPS (Requests process per second)
-11,995,620 RPM (Requests process per minute)
+* Throughput: 199,927 RPS (requests per second)
+11,995,620 RPM (requests per minute)
 
 * Error Rate: 0.0% under load
 
@@ -55,8 +55,8 @@ GET Answers
 
 * Response Time (Latency): 11 ms
 
-* Throughput: 199,930 RPS (Requests process per second)
-11,995,800 RPM (Requests process per minute)
+* Throughput: 199,930 RPS (requests per second)
+11,995,800 RPM (requests per minute)
 
 * Error Rate: 0.0% under load
 
