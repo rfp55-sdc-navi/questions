@@ -39,11 +39,11 @@ Objectives
 ## Questions & Answers
 ### Test results with Loader.io
 GET Questions
-* 10,000 clients over 20 seconds using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
+* 200,000 requests process per second (RPS) using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
 
 * Response Time (Latency): 11 ms
 
-* Throughput: 9,996.35 RPS (Requests process per second)
+* Throughput: 199,927 RPS (Requests process per second)
 11,995,620 RPM (Requests process per minute)
 
 * Error Rate: 0.0% under load
@@ -51,11 +51,11 @@ GET Questions
 ![GQ][GQ]
 
 GET Answers
-* 10,000 clients over 20 seconds using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
+* 200,000 requests process per second (RPS) using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
 
 * Response Time (Latency): 11 ms
 
-* Throughput: 9,996.5 RPS (Requests process per second)
+* Throughput: 199,930 RPS (Requests process per second)
 11,995,800 RPM (Requests process per minute)
 
 * Error Rate: 0.0% under load
