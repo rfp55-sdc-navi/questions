@@ -61,6 +61,23 @@ GET Answers
 * Error Rate: 0.0% under load
 
 ![GA][GA]
+
+## Endpoints
+GET /qa/questions - Retrieves a list of questions for a particular product - does not include any reported questions.
+
+GET /qa/questions/:question_id/answers - Returns answers for a given question - does not include any reported answers.
+
+POST /qa/questions - Adds a question for the given product
+
+POST /qa/questions/:question_id/answers - Adds an answer for the given question
+
+PATCH /qa/questions/:question_id/helpful - Updates a question to show it was found helpful.
+
+PATCH /qa/questions/:question_id/report - Updates a question to show it was reported - the question will not be returned in GET request.
+
+PATCH /qa/answers/:answer_id/helpful - Updates an answer to show it was found helpful.
+
+PATCH /qa/answers/:answer_id/report - Updates an answer to show it has been reported - the answer will not be returned in GET request
 ## System Architecture
 ![System Architecture][system_arch]
 ## Contact
