@@ -39,7 +39,7 @@ Objectives
 ## Questions & Answers
 ### Test results with Loader.io
 GET Questions
-* 200,000 requests process per second (RPS) using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
+* 200,000 requests per second (RPS) using 5 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
 
 * Response Time (Latency): 11 ms
 
@@ -51,7 +51,7 @@ GET Questions
 ![GQ][GQ]
 
 GET Answers
-* 200,000 requests process per second (RPS) using 4 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
+* 200,000 requests per second (RPS) using 5 AWS t2 micro instances (PostgreSQL database, NGINX, Express Server 1, Express Server 2, Express Server 3)
 
 * Response Time (Latency): 11 ms
 
